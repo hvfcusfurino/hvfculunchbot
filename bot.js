@@ -8,6 +8,8 @@ function respond() {
       botRegex = /^\/cool guy$/;
       
       lunchRegex = /^\/lunch$/;
+      
+      helpRegex = /^\/help$/
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
