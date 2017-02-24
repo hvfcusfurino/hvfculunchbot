@@ -13,18 +13,20 @@ function respond() {
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    var coolMsg = require('cool-ascii-faces');
+    postMessage(coolMsg);
     this.res.end();
   } else if (request.text && lunchRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    var lunchMsg = 'start lunch';
+    postMessage(lunchMsg);
     this.res.end();
   }else if (request.text && helpRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    var helpMsg = 'help message information';
+    postMessage(helpMsg);
     this.res.end();
   }
-  
   else {
     console.log("don't care");
     this.res.writeHead(200);
@@ -34,10 +36,10 @@ function respond() {
   
 }
 
-function postMessage() {
+function postMessage(msg) {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
+  botResponse = msg;
 
   options = {
     hostname: 'api.groupme.com',
