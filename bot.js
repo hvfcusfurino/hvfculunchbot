@@ -1,5 +1,5 @@
 var HTTPS = require('https');
-
+var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
@@ -10,21 +10,14 @@ function respond() {
       lunchRegex = /^\/lunch$/;
       
       helpRegex = /^\/help$/
-   
+
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    var coolMsg = require('cool-ascii-faces');
-    postMessage(coolMsg);
+    postMessage();
     this.res.end();
   } else if (request.text && lunchRegex.test(request.text)) {
     this.res.writeHead(200);
-    var lunchMsg = "starting lunch order"
-    postMessage(lunchMsg);
-    this.res.end();
-  } else if(request.text && helpRegex.test(request.text)) {
-    this.res.writeHead(200);
-    var helpMsg = "here are the commands to help you place your lunch order"
-    postMessage(helpMsg);
+    postMessage();
     this.res.end();
   }
   
@@ -37,10 +30,10 @@ function respond() {
   
 }
 
-function postMessage(msg) {
-  var botResponse, options, body, botReq, msg;
+function postMessage() {
+  var botResponse, options, body, botReq;
 
-  botResponse = msg;
+  botResponse = cool();
 
   options = {
     hostname: 'api.groupme.com',
